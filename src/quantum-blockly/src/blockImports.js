@@ -1,4 +1,3 @@
-import Blockly from 'blockly/core';
 import './blocks/board_length';
 import './blocks/board';
 import './blocks/check_index';
@@ -19,3 +18,5 @@ import './blocks/update_dict';
 import './blocks/update_quad_dict';
 import './blocks/value_block';
 import './javascriptGenerators';
+import './blocks/pyqubo_blocks';
+import "./blocks/student_friendly_blocks";

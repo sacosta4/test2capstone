@@ -1,0 +1,82 @@
+/* src/StudentModeSwitcher.css */
+
+.student-mode-container {
+  margin: 15px 0;
+}
+
+.mode-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.mode-toggle-button {
+  background-color: #3F51B5;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+}
+
+.mode-toggle-button:hover {
+  background-color: #303F9F;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mode-toggle-button.student-active {
+  background-color: #4CAF50;
+}
+
+.mode-toggle-button.student-active:hover {
+  background-color: #388E3C;
+}
+
+.student-mode-label {
+  background-color: #E8F5E9;
+  color: #388E3C;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mode-toggle-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .mode-toggle-button {
+    width: 100%;
+  }
+  
+  .student-mode-label {
+    align-self: center;
+  }
+}

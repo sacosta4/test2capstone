@@ -44,3 +44,71 @@ Blockly.Blocks['linear_term_block'] = {
   }
 };
 
+// Initialize dictionaries block
+Blockly.Blocks['init_dictionaries'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Initialize QUBO dictionaries");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip("Initialize linear and quadratic dictionaries for QUBO");
+    this.setHelpUrl("");
+  }
+};
+
+// Set linear weight block
+Blockly.Blocks['set_linear_weight'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Set linear weight for");
+    this.appendValueInput("VARIABLE")
+        .setCheck("String")
+        .appendField("variable");
+    this.appendValueInput("WEIGHT")
+        .setCheck("Number")
+        .appendField("weight");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip("Set weight for a linear term in QUBO");
+    this.setHelpUrl("");
+  }
+};
+
+// Set quadratic weight block
+Blockly.Blocks['set_quadratic_weight'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Set quadratic weight for");
+    this.appendValueInput("VARIABLE1")
+        .setCheck("String")
+        .appendField("variable 1");
+    this.appendValueInput("VARIABLE2")
+        .setCheck("String")
+        .appendField("variable 2");
+    this.appendValueInput("WEIGHT")
+        .setCheck("Number")
+        .appendField("weight");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip("Set weight for a quadratic term in QUBO");
+    this.setHelpUrl("");
+  }
+};
+
+// Return dictionaries block
+Blockly.Blocks['return_dictionaries'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Return QUBO dictionaries");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(false, null);
+    this.setColour(230);
+    this.setTooltip("Return the linear and quadratic dictionaries");
+    this.setHelpUrl("");
+  }
+};

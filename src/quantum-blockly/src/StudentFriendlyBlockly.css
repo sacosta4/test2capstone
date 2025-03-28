@@ -1,0 +1,255 @@
+/* src/StudentFriendlyBlockly.css */
+
+.student-friendly-blockly {
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px 0;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px dashed #4CAF50;
+}
+
+.student-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.student-header h1 {
+  color: #2196F3;
+  margin: 0;
+  font-size: 28px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.student-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.difficulty-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #e8f5e9;
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+.difficulty-selector label {
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.difficulty-selector select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid #4CAF50;
+  font-size: 16px;
+  background-color: white;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.tips-toggle {
+  background-color: #FFC107;
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.tips-toggle:hover {
+  background-color: #FFB300;
+  transform: scale(1.05);
+}
+
+.tips-panel {
+  background-color: #FFF9C4;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #FFC107;
+}
+
+.tips-panel h3 {
+  color: #F57C00;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.active-tip {
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 0;
+  color: #333;
+}
+
+.blockly-quick-actions {
+  background-color: #E3F2FD;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blockly-quick-actions h3 {
+  color: #1976D2;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.quick-blocks {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.block-button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.block-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.block-button.easy {
+  background-color: #4CAF50;
+}
+
+.block-button.medium {
+  background-color: #2196F3;
+}
+
+.block-button.hard {
+  background-color: #9C27B0;
+}
+
+.blockly-examples {
+  background-color: #F3E5F5;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blockly-examples h3 {
+  color: #9C27B0;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.examples-list {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.example-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 150px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.example-item h4 {
+  margin-top: 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.example-button {
+  background-color: #FF5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.example-button:hover {
+  background-color: #E64A19;
+}
+
+.blockly-container {
+  margin-bottom: 20px;
+  border: 3px solid #2196F3;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.blockly-help {
+  background-color: #E8EAF6;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #3F51B5;
+}
+
+.blockly-help h3 {
+  color: #3F51B5;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.blockly-help ol {
+  margin: 10px 0 0 0;
+  padding-left: 25px;
+}
+
+.blockly-help li {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .student-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .student-controls {
+    margin-top: 15px;
+    width: 100%;
+  }
+  
+  .tips-panel, .blockly-quick-actions, .blockly-examples, .blockly-help {
+    padding: 12px;
+  }
+  
+  .quick-blocks, .examples-list {
+    flex-direction: column;
+  }
+  
+  .block-button, .example-button {
+    width: 100%;
+  }
+}

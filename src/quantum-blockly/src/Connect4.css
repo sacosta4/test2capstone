@@ -1,99 +1,99 @@
 .container {
-    text-align: center;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #333;
-    background-color: #f0f8ff;
-    padding: 10px;
-    border-radius: 10px;
-    width: 700px;
-    max-width: 1000px;
-    margin-bottom: 290px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  h1 {
-    font-size: 2.5rem;
-    color: #ff6f61;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    color: #1e90ff;
-  }
-  .board {
-    display: grid;
-    grid-template-columns: repeat(7, 75px);
-    grid-template-rows: repeat(6, 75px);
-    gap: 10px;
-    margin: 20px;
-    max-width: 300px;
-    margin-bottom: 50px;
-    margin-left: 50px;
-  }
-  .ticboard {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin: 20px auto;
-    max-width: 300px;
-  }
-  .cell {
-    background-color: #ffeb3b;
-    color: #333;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  .cell:hover {
-    background-color: #ffc107;
-  }
-  .controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 50px;
-    
-  }
-  .difficulty {
-    margin-bottom: 5px; 
-  }
-  .gamemode {
-    margin-bottom: 5px;
-  }
+  text-align: center;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #333;
+  background-color: #f0f8ff;
+  padding: 10px;
+  border-radius: 10px;
+  width: 700px;
+  max-width: 1000px;
+  margin-bottom: 390px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+h1 {
+  font-size: 2.5rem;
+  color: #ff6f61;
+}
 
-  button {
-    background-color: #4caf50;
-    color: white;
-    font-size: 1rem;
-    padding: 8px 12px;
-    margin: 5px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+h2 {
+  font-size: 1.5rem;
+  color: #1e90ff;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(7, 75px);
+  grid-template-rows: repeat(6, 75px);
+  gap: 10px;
+  margin: 20px;
+  max-width: 300px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+}
+.ticboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px auto;
+  max-width: 300px;
+}
+.cell {
+  background-color: #ffeb3b;
+  color: #333;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.cell:hover {
+  background-color: #ffc107;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
   
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  label {
-    display: block;
-    margin: 10px 0;
-    font-size: 1rem;
-  }
-  
-  select {
-    padding: 8px;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    margin-left: 5px;
-  }
+}
+.difficulty {
+  margin-bottom: 5px; 
+}
+.gamemode {
+  margin-bottom: 5px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  font-size: 1rem;
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+select {
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-left: 5px;
+}

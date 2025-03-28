@@ -1,3 +1,5 @@
+/* Fixed version of BlocklyComponent.css */
+
 h2 {
     text-align: center;
 }
@@ -14,4 +16,233 @@ h2 {
 
 #generate-btn {
     width: 100%;
+}
+
+/* CRITICAL FLYOUT FIXES - Add these to fix disappearing sidebar */
+.blocklyFlyout {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    z-index: 100 !important;
+}
+
+.blocklyFlyoutBackground {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    fill: #f5f5f5 !important;
+    stroke: #ddd !important;
+    stroke-width: 1px !important;
+}
+
+/* Ensure toolbox categories remain visible */
+.blocklyToolboxDiv {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1) !important;
+    min-width: 180px !important;
+    max-width: 220px !important;
+}
+
+/* Improve visibility of the toolbox categories */
+.blocklyTreeRow {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 2px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+}
+
+/* Highlight selected category more prominently */
+.blocklyTreeSelected {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 0 0 2px #4285F4 !important;
+}
+
+/* Improve visibility of category hover state */
+.blocklyTreeRow:hover {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Make flyout blocks stand out more */
+.blocklyFlyoutButton {
+    fill: #4285F4 !important;
+}
+
+/* Ensure workspace doesn't hide the toolbox */
+.blocklyWorkspace {
+    pointer-events: auto !important;
+}
+
+/* Prevent flyout from being covered by other elements */
+.blocklyFlyout {
+    z-index: 100 !important;
+}
+
+/* Make the block connections more visible */
+.blocklyHighlightedConnectionPath {
+    stroke: #ff3399 !important;
+    stroke-width: 3px !important;
+}
+
+/* Make tree labels more readable */
+.blocklyTreeLabel {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px !important;
+    padding: 2px 8px !important;
+}
+
+/* Make category and block separators more visible */
+.blocklyTreeSeparator {
+    border-bottom: solid #ddd 1px !important;
+    height: 0 !important;
+    margin: 8px 0 !important;
+}
+
+/* Improve contrast for block text */
+.blocklyText {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+/* Fix for Firefox specific issues */
+@-moz-document url-prefix() {
+    .blocklyFlyout {
+        transform: none !important;
+    }
+    
+    .blocklyFlyoutBackground {
+        transform: none !important;
+    }
+}
+
+/* Fix for Safari specific issues */
+@media not all and (min-resolution: 0.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+        .blocklyFlyout {
+            transform: translateZ(0) !important;
+        }
+        
+        .blocklyToolboxDiv {
+            transform: translateZ(0) !important;
+        }
+    }
+}
+
+/* Controls styling */
+.controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.controls button {
+    background-color: #4CAF50 !important; /* Green */
+    color: white !important;
+    font-weight: bold !important;
+    border: none !important;
+    padding: 10px 15px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.controls button:hover {
+    background-color: #45a049 !important; /* Darker green */
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.controls button:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Special styling for Generate Code button */
+#generate-btn {
+    background-color: #2E7D32 !important; /* Darker green */
+    width: 100% !important;
+    padding: 12px 20px !important;
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+}
+
+#generate-btn:hover {
+    background-color: #1B5E20 !important; /* Even darker green */
+}
+
+/* Make file input more visible */
+.controls input[type="file"] {
+    border: 2px solid #4CAF50 !important;
+    background-color: #F1F8E9 !important;
+    color: #2E7D32 !important;
+    padding: 8px 12px !important;
+    border-radius: 4px !important;
+}
+
+.controls input[type="file"]:hover {
+    background-color: #E8F5E9 !important;
+    border-color: #2E7D32 !important;
+}
+
+/* Fix for toolbox issues in Microsoft Edge */
+@supports (-ms-ime-align: auto) {
+    .blocklyFlyout {
+        position: absolute !important;
+    }
+    
+    .blocklyToolboxDiv {
+        position: absolute !important;
+    }
+}
+
+/* Improve visibility of blocks in the flyout */
+.blocklyFlyoutBlock {
+    fill-opacity: 0.9 !important;
+    transition: fill-opacity 0.2s !important;
+}
+
+.blocklyFlyoutBlock:hover {
+    fill-opacity: 1 !important;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2)) !important;
+}
+
+/* Make scrollbars more visible */
+.blocklyScrollbarHandle {
+    fill: #bbb !important;
+}
+
+.blocklyScrollbarBackground:hover + .blocklyScrollbarHandle,
+.blocklyScrollbarHandle:hover {
+    fill: #888 !important;
+}
+
+/* Better focus indicators for accessibility */
+.blocklyTreeSelected:focus {
+    outline: 3px solid #4285F4 !important;
+}
+
+/* Make block selection more obvious */
+.blocklySelected > .blocklyPath {
+    stroke: #4285F4 !important;
+    stroke-width: 3px !important;
+}
+
+/* Improve block connection points visibility */
+.blocklyConnectionPoint {
+    stroke-width: 2px !important;
+    stroke: #4285F4 !important;
+    fill: #fff !important;
+}
+
+/* Make workspace grid more subtle */
+.blocklyMainBackground {
+    stroke-width: 0.5px !important;
+    stroke: #ddd !important;
 }
