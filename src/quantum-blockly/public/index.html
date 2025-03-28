@@ -7,37 +7,280 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Quantum Blockly - Educational tool for learning quantum computing concepts"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <title>Quantum Blockly</title>
+    <!-- Add startup script to clean application state -->
+    <script src="%PUBLIC_URL%/startup.js"></script>
+    <!-- Add memory management script -->
+    <script>
+      // Add recovery button in case of errors
+      document.addEventListener('DOMContentLoaded', function() {
+        const recoveryButton = document.createElement('button');
+        recoveryButton.innerText = 'Recover Application';
+        recoveryButton.style.position = 'fixed';
+        recoveryButton.style.bottom = '10px';
+        recoveryButton.style.right = '10px';
+        recoveryButton.style.zIndex = '9999';
+        recoveryButton.style.display = 'none';
+        recoveryButton.style.backgroundColor = '#f44336';
+        recoveryButton.style.color = 'white';
+        recoveryButton.style.border = 'none';
+        recoveryButton.style.borderRadius = '5px';
+        recoveryButton.style.padding = '8px 16px';
+        recoveryButton.style.cursor = 'pointer';
+        
+        recoveryButton.addEventListener('click', function() {
+          // Clear application state
+          localStorage.clear();
+          sessionStorage.clear();
+          
+          // Reload the page
+          window.location.reload();
+        });
+        
+        document.body.appendChild(recoveryButton);
+        
+        // Show recovery button after errors
+        window.addEventListener('error', function() {
+          recoveryButton.style.display = 'block';
+        });
+      });
+      
+      // Add memory management
+      window.addEventListener('error', function(event) {
+        console.error('Uncaught runtime error:', event.error);
+        
+        // If error mentions memory, suggest refreshing the page
+        if (event.error && event.error.message && 
+            (event.error.message.includes('memory') || 
+             event.error.message.includes('Memory') ||
+             event.error.message.includes('heap'))) {
+          alert('Memory issue detected. Please save your work and refresh the page.');
+        }
+      });
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    
+    <!-- Extremely minimalist Blockly flyout fix -->
+    <script>
+      // Extremely minimalist Blockly flyout fix
+      (function() {
+        // Keep a counter to reduce logging
+        let fixCount = 0;
+        
+        // Main fix function - keep flyout open and reduce console noise
+        function keepFlyoutOpen() {
+          const flyouts = document.querySelectorAll('.blocklyFlyout, .blocklyFlyoutBackground');
+          if (flyouts.length > 0) {
+            // Only log occasionally to reduce console spam
+            if (fixCount % 20 === 0) {
+              console.log("Applying flyout fix...");
+            }
+            fixCount++;
+            
+            // Force all flyouts to be visible
+            flyouts.forEach(el => {
+              if (el) {
+                el.style.display = 'block';
+                el.style.visibility = 'visible';
+                el.style.opacity = '1';
+              }
+            });
+            
+            // Also make categories more clickable
+            const categories = document.querySelectorAll('.blocklyTreeRow');
+            categories.forEach(cat => {
+              if (cat && !cat.hasAttribute('fixed')) {
+                cat.style.cursor = 'pointer';
+                cat.style.padding = '6px';
+                cat.style.margin = '2px 0';
+                cat.setAttribute('fixed', 'true');
+              }
+            });
+          }
+        }
+        
+        // Reduce performance impact by using less frequent checks
+        const interval = setInterval(keepFlyoutOpen, 1000);
+        
+        // Add cleanup on page unload
+        window.addEventListener('beforeunload', function() {
+          clearInterval(interval);
+        });
+        
+        // Run after clicks - crucial for fixing the immediate disappearance
+        document.addEventListener('click', function(e) {
+          // Run fix multiple times after clicks with increasing delays
+          // This catches the flyout disappearing after category selection
+          [10, 50, 200, 500].forEach(delay => {
+            setTimeout(keepFlyoutOpen, delay);
+          });
+        });
+        
+        // Clear console periodically to reduce visual clutter
+        setInterval(function() {
+          if (typeof console !== 'undefined') {
+            // Only clear if we have more than 1000 messages
+            if (document.querySelectorAll('.console-message').length > 1000) {
+              console.clear();
+            }
+          }
+        }, 30000);
+        
+        // Block excessive memory-related console logging
+        const originalConsoleLog = console.log;
+        console.log = function(...args) {
+          // Filter out memory-related logs
+          if (args.length > 0 && typeof args[0] === 'string') {
+            const str = args[0];
+            if (str.includes('memory') || str.includes('cleanup') || 
+                str.includes('garbage') || str.includes('optimization')) {
+              // Skip these logs
+              return;
+            }
+          }
+          // Pass all other logs through
+          originalConsoleLog.apply(console, args);
+        };
+      })();
+    </script>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <!-- Add this after the previous script to reduce processing -->
+    <script>
+      // Completely disable intensive processing operations
+      (function() {
+        // Override all performance-intensive functions
+        if (window.forceGarbageCollectionHint) {
+          window.forceGarbageCollectionHint = function() {
+            // Do nothing - disabled
+          };
+        }
+        
+        if (window.optimizeWorkspace) {
+          window.optimizeWorkspace = function() {
+            // Do nothing - disabled
+          };
+        }
+        
+        if (window.monitorMemory) {
+          window.monitorMemory = function() {
+            // Return empty cleanup function
+            return function() {};
+          };
+        }
+        
+        // Use MutationObserver to catch and disable any newly created intervals
+        const observer = new MutationObserver(function(mutations) {
+          // Check for code that might be setting intervals
+          if (window.setInterval) {
+            // Save the original setInterval
+            const originalSetInterval = window.setInterval;
+            
+            // Override setInterval to filter out memory-related intervals
+            window.setInterval = function(fn, delay, ...args) {
+              // If the function contains memory-related code, extend the delay drastically
+              if (fn && fn.toString) {
+                const fnStr = fn.toString();
+                if (fnStr.includes('memory') || fnStr.includes('cleanup') || 
+                    fnStr.includes('garbage') || fnStr.includes('optimization')) {
+                  // Extend delay to 1 hour to effectively disable
+                  delay = 3600000;
+                }
+              }
+              // Call original with possibly modified delay
+              return originalSetInterval.call(window, fn, delay, ...args);
+            };
+          }
+        });
+        
+        // Start observing document
+        observer.observe(document, {
+          childList: true,
+          subtree: true
+        });
+        
+        // Clean up on page unload
+        window.addEventListener('beforeunload', function() {
+          observer.disconnect();
+        });
+      })();
+    </script>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <!-- Special fix specifically for Blockly's category behavior -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Give DOM time to set up the Blockly interface
+        setTimeout(() => {
+          // Find all category rows
+          const allRows = document.querySelectorAll('.blocklyTreeRow');
+          console.log(`Found ${allRows.length} category rows`);
+          
+          // Add click listeners to each row that force the flyout to stay open
+          allRows.forEach((row, index) => {
+            // Create a clone to remove existing listeners
+            const newRow = row.cloneNode(true);
+            if (row.parentNode) {
+              row.parentNode.replaceChild(newRow, row);
+              
+              // Add a strong click effect
+              newRow.addEventListener('click', function(e) {
+                // Make sure click works
+                e.stopPropagation();
+                
+                // Highlight this row as selected
+                document.querySelectorAll('.blocklyTreeSelected').forEach(el => {
+                  el.classList.remove('blocklyTreeSelected');
+                });
+                newRow.classList.add('blocklyTreeSelected');
+                
+                // Force flyout to show with multiple delays for reliability
+                [10, 100, 300, 500, 1000].forEach(delay => {
+                  setTimeout(() => {
+                    const flyouts = document.querySelectorAll('.blocklyFlyout, .blocklyFlyoutBackground');
+                    flyouts.forEach(flyout => {
+                      if (flyout) {
+                        flyout.style.display = 'block';
+                        flyout.style.visibility = 'visible';
+                        flyout.style.opacity = '1';
+                      }
+                    });
+                  }, delay);
+                });
+              });
+              
+              // Add styling to make it obvious this is clickable
+              newRow.style.cursor = 'pointer';
+              newRow.style.padding = '8px 5px';
+              newRow.style.margin = '3px 0';
+              newRow.style.borderRadius = '4px';
+              newRow.style.transition = 'background-color 0.2s';
+              
+              // Add hover effect
+              newRow.addEventListener('mouseover', () => {
+                newRow.style.backgroundColor = 'rgba(0,0,0,0.1)';
+              });
+              
+              newRow.addEventListener('mouseout', () => {
+                newRow.style.backgroundColor = '';
+              });
+            }
+          });
+          
+          // Auto-select first category to show its blocks by default
+          if (allRows.length > 0) {
+            setTimeout(() => {
+              allRows[0].click();
+            }, 1000);
+          }
+        }, 2000);
+      });
+    </script>
+    <script src="%PUBLIC_URL%/flyout-fix.js"></script
   </body>
 </html>
